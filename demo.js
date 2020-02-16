@@ -83,15 +83,15 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   var ui = H.ui.UI.createDefault(map, defaultLayers);
 
   
-  desplayGems(map,[
- [41.8625, -87.4166],
- [47.8625, -87.4166]]
- ); 
+//   desplayGems(map,[
+//  [41.8625, -87.4166],
+//  [47.8625, -87.4166]]
+//  ); 
  
 
 //send the path points to server & plot the gems using the resulting points from the server
 (async () => {
-  const rawResponse = await fetch('https://hiddengemsapp.herokuapp.com/gems/2', {
+  const rawResponse = await fetch('https://hiddengemsapp.herokuapp.com/gems/3', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -113,6 +113,10 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
         {
           "lat": 37.7647816,
           "lng": -122.4201818
+        },
+        {
+          "lat": 37.7647216,
+          "lng": -122.4206818
         }
       ]
     })}
