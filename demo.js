@@ -89,7 +89,7 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
  ); 
  
 
-
+//send the path points to server & plot the gems using the resulting points from the server
 (async () => {
   const rawResponse = await fetch('https://hiddengemsapp.herokuapp.com/gems/2', {
     method: 'POST',
@@ -117,10 +117,14 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
       ]
     })}
   );
+  //wait for the server to process
   const content = await rawResponse.json();
-  //  desplayGems(map,content.data);
 
-  console.log(content);
-    console.log(content.data);
-
+    console.log(content);
+    console.log(content.data[0].lat);
+    console.log(content.data[0].lng);
+   //show points (gems) to the map
+    for(var i = 0; i<content.data.length;i++){
+      addGem(map,content.data[i].lat, content.data[i].lng);
+    }
 })();
